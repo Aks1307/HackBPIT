@@ -217,8 +217,8 @@ if os.path.exists(audio_dir):
     shutil.rmtree(audio_dir)
 if os.path.exists(picture_dir):
     shutil.rmtree(picture_dir)
-# if os.path.exists(video_dir):
-#     shutil.rmtree(video_dir)
+if os.path.exists(video_dir):
+    shutil.rmtree(video_dir)
 
 fr = open('./txt/' + infile[:-4] + '_clean.txt')
 count_lines = 1
@@ -340,5 +340,4 @@ video_clip.write_videofile(infile[:-4]+'.mp4',codec='libx264',fps=_FPS)
 
 shutil.copy('sample.mp4', 'C:\\Users\\deepa\\Desktop\\HackBPIT\\public_static\\public\\video')
 
-if os.path.exists(video_dir):
-    shutil.rmtree(video_dir)
+
