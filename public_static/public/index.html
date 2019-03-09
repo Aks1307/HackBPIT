@@ -30,7 +30,7 @@
                  <input type="file" name="imgUploader" multiple class="btn"/>
              </div>
              <div class="form-group">
-             <input type="submit" name="Uploader" class="btn btn-primary py-3 px-3 text-white">
+             <input id ='sub' type="submit" name="Uploader" onclick="loading()" class="btn btn-primary py-3 px-3 text-white">
              </div>
           </form>
           </div>
@@ -40,11 +40,16 @@
 
    
   <!-- </div> -->
-
+  
   <script src="js/jquery-3.3.1.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
   <script src="js/aos.js"></script>
   <script src="js/main.js"></script>
-    
+  <script>
+      let loading = ()=>{
+        console.log('i ran')
+        $('#sub').val('Please Wait!!');
+      } 
+  </script>  
   </body>
 </html>

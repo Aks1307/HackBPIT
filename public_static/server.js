@@ -17,49 +17,32 @@ let Storage = multer.diskStorage({
 
 let upload = multer({ storage: Storage }).array("imgUploader", 3); //Field name and max count
 
-// app.get("/", function (req, res) {
-//     res.sendFile(__dirname + "/index.html");
-// });
-
 app.post("/api/Upload", function (req, res) {
     upload(req, res, function (err) {
-    
-    console.log('Processing the File!');
-    let {PythonShell} = require('python-shell');
+        
+        console.log('Processing the File!');
+        let {PythonShell} = require('python-shell');
 
-    let options = {
-      mode: 'text',
-      pythonPath: 'C:\\Users\\deepa\\Miniconda3\\python.exe', 
-      pythonOptions: ['-u'],
-      // make sure you use an absolute path for scriptPath
-      scriptPath: 'C:\\Users\\deepa\\Desktop\\HackBPIT\\python'
-    };
+        let options = {
+        mode: 'text',
+        pythonPath: 'C:\\Users\\deepa\\Miniconda3\\python.exe', 
+        pythonOptions: ['-u'],
+        scriptPath: 'C:\\Users\\deepa\\Desktop\\HackBPIT\\python'
+        };
 
-    // let pyshell = new PythonShell('text_to_videobook.py', options);
-
-    // pyshell.on('message', function (message) {
-    //     // received a message sent from the Python script (a simple "print" statement)
-    //     console.log(message);
-    // });
-
-    // pyshell.end(function (err,code,signal) {
-    //     if (err) throw err;
-    //     console.log('The exit code was: ' + code);
-    //     console.log('The exit signal was: ' + signal);
-    //     console.log('finished');
-    //     // console.log('finished');
-    // });
-
-    PythonShell.run('text_to_videobook.py', options, function (err, results) {
-      if (err) throw err;
-      // results is an array consisting of messages collected during execution
-      console.log('results: %j', results);
-    //   return res.redirect('/videobook.html');
-    });
+        PythonShell.run('text_to_videobook.py', options, function (err, results) {
+            if (err) throw err;
+            else {
+                console.log('results: %j', results);
+                // return res.redirect('/videobook.html');
+                return res.download('../python/sample.mp4')
+            }
+            
+        });
         if (err) {
             return res.end("Something went wrong!");
         }
-        return res.redirect('/videobook.html');
+        // return res.redirect('/videobook.html');
     });
 });
 
