@@ -21,7 +21,7 @@ import shutil
 stop = set(stopwords.words('english'))
 lemma = WordNetLemmatizer()
 _FPS = 24
-f_dict = open('dictionary.txt')
+f_dict = open('C:\\Users\\deepa\\Desktop\\HackBPIT\\python\\dictionary.txt')
 scrabble_list = []
 for line in f_dict:
     scrabble_list.append(str(line.replace('\n', '').lower()))
@@ -191,7 +191,10 @@ def get_topics_from_text1(line):
 
 # path = input('path to img/pdf: ')
 
-path = 'sample.pdf'
+path = 'C:\\Users\\deepa\\Desktop\\HackBPIT\\public_static\\upload\\sample.pdf'
+
+import os
+os.chdir('C:\\Users\\deepa\\Desktop\\HackBPIT\\python')
 
 if path.split('.')[-1]!='pdf':
     from Naked.toolshed.shell import execute_js
@@ -214,8 +217,8 @@ if os.path.exists(audio_dir):
     shutil.rmtree(audio_dir)
 if os.path.exists(picture_dir):
     shutil.rmtree(picture_dir)
-if os.path.exists(video_dir):
-    shutil.rmtree(video_dir)
+# if os.path.exists(video_dir):
+#     shutil.rmtree(video_dir)
 
 fr = open('./txt/' + infile[:-4] + '_clean.txt')
 count_lines = 1
@@ -334,3 +337,8 @@ for video in video_files:
 
 video_clip = concatenate_videoclips(video_clip_list)
 video_clip.write_videofile(infile[:-4]+'.mp4',codec='libx264',fps=_FPS)
+
+shutil.copy('sample.mp4', 'C:\\Users\\deepa\\Desktop\\HackBPIT\\public_static\\public\\video')
+
+if os.path.exists(video_dir):
+    shutil.rmtree(video_dir)
